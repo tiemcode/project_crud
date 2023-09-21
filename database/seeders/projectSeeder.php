@@ -2,25 +2,26 @@
 
 namespace Database\Seeders;
 
-use App\Models\user;
+use App\Models\projects;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class userSeeder extends Seeder
+
+class projectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $names = ['admin', 'timo', 'joost'];
-        for ($i = 0; $i < count($names); $i++) {
-            user::insert(
+        for ($i = 0; $i < 3; $i++) {
+            # code...
+            projects::insert(
                 [
-                    'name' => $names[$i],
-                    'email' => $names[$i] . "@gmail.com",
-                    'password' => Hash::make($names[$i] . $names[$i]),
+                    'name' => 'test',
+                    'intro' => 'dit is een test',
+                    'description' => 'description',
+                    'date_started' => date("Y/m/d"),
                     'updated_at' => date("Y/m/d"),
                     'created_at' => date("Y/m/d")
                 ]

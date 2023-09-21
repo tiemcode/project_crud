@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postsController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\projectController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,7 @@ use App\Http\Controllers\categoryController;
 */
 //home page
 Route::get('/', [postsController::class, 'index'])->name('home');
+Route::get('/projects', [projectController::class, 'home'])->name('project.home');
 //admin panel
 Route::get('/dashboard', [postsController::class, "showAdmin"])
     ->middleware(['auth'])->name('dashboard');
@@ -35,15 +38,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/artical/search', [postsController::class, 'search'])->name('search.post');
     //categories page
     Route::get('/dashboard/category', [categoryController::class, 'index'])->name('category.index');
-
     Route::get('/dashboard/category/add', [categoryController::class, "add"])->name('category.add');
     Route::post('/dashboard/category/store', [categoryController::class, "store"])->name('category.added');
-
-
     Route::get('/dashboard/catagory/edit/{id}', [categoryController::class, "edit"])->name('category.edit');
     Route::post('dashboard/category/edited/{id}');
-
     Route::post('/catagory/delete/{id}', [categoryController::class, "delete"])->name('category.delete');
+
+    //projects page
+    Route::get('/dashboard/projects', [projectController::class, 'index'])->name('projects.index');
+    Route::get('/dashboard/projects/{id}/edit', [projectController::class, 'edit'])->name('projects.edit');
+    Route::get('/dashboard/projects/add', [projectController::class, 'add'])->name('projects.add');
+    Route::post('/dashboard/projects/{id}/deleted', [projectController::class, 'delete'])->name('projects.delete');
 });
 
 require __DIR__ . '/auth.php';

@@ -78,6 +78,9 @@
                     <li>
                         <a href="{{route('category.index')}}" class="block p-4 text-white hover:bg-gray-700">categorieën </a>
                     </li>
+                    <li>
+                        <a href="{{route('projects.index')}}" class="block p-4 text-white hover:bg-gray-700">projecten</a>
+                    </li>
                     <!-- Add more navigation links as needed -->
                 </ul>
                 </nav>
@@ -88,7 +91,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     @yield('scripts')
     <STYLe>
-        .ck{
+        .ck {
             color: black;
         }
     </STYLe>

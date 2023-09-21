@@ -14,7 +14,7 @@ class postsController extends Controller
     public function index()
     {
         $allPosts = Post::get();
-        return  view('welcome', [
+        return  view('home.welcome', [
             'allposts' => $allPosts,
         ]);
     }
@@ -34,7 +34,6 @@ class postsController extends Controller
     }
     public function addGet()
     {
-
         $allcate = Category::get();
         return view('articales.addPost', ['catedata' => $allcate]);
     }
