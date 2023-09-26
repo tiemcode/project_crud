@@ -5,8 +5,8 @@
                 {{ __('categorieën') }}
             </h1>
             <div class="flex flex-row-reverse">
-                <a href="{{ route('category.add') }}">
-                    <button type="button" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <button type="button">
                         categorieën toevoegen
                     </button>
                 </a>
@@ -22,22 +22,21 @@
                 </td>
                 <td class="p-2">
                     <div class="flex justify-center">
-                        <p>
-                            voor het laast geedit
-                        </p>
-
+                        <p>voor het laast geedit</p>
                     </div>
                 </td>
-                <td class="flex justify-center p-2">
-                    acties
+                <td class="p-2">
+                    <div class="flex justify-center">
+                        acties
+                    </div>
                 </td>
             </tr>
             @foreach ($allcate as $cate )
             <tr class="border-b border-gray-700">
                 <td class="w-[40%] p-2">
-                    <h2>
+                    <h6>
                         {{ Str::ucfirst($cate->name) }}
-                    </h2>
+                    </h6>
                 </td>
                 <td class="w-[20%] p-2 text-white">
                     <div class="flex justify-center">
@@ -46,7 +45,7 @@
                 </td>
                 <td class="w-[20%] p-2">
                     <div class="flex justify-evenly">
-                        <a href="{{ route('category.edit', ['id' => $cate->id]) }}">edit</a>
+                        <a class="text-white no-underline" href="/id={{$cate->id}}" data-bs-toggle="modal" data-bs-target="#editModal">edit</a>
                         <form method="POST" action="{{ route('category.delete', ['id' => $cate->id]) }}">
                             @csrf
                             <div class="text-red-500 hover:cursor-pointer" :href="route('deletePost')" onclick="event.preventDefault();
@@ -58,8 +57,47 @@
                 </td>
             </tr>
             @endforeach
-
         </tbody>
     </table>
-
+    <!-- add category -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">categorieën toevoegen</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('category.added') }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <input type="text" name="title" class="form-control" id="inputField" placeholder="Enter something">
+                        </div>
+                        <button type="submit" class="btn btn-primary">toevoegen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end add category -->
+    <!-- edit category -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">categorieën aanpasen</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <input type="text" name="title" class="form-control" id="inputField" placeholder="Enter something">
+                        </div>
+                        <button type="submit" class="btn btn-primary">pas aan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

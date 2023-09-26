@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\projects;
+use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,11 +14,19 @@ class projectSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 3; $i++) {
-            # code...
-            projects::insert(
+        $arr = [
+            'test',
+            'henk',
+            'pieter',
+            'geert',
+            'gerda',
+
+        ];
+        for ($i = 0; $i < count($arr); $i++) {
+
+            Project::insert(
                 [
-                    'name' => 'test',
+                    'name' => $arr[$i],
                     'intro' => 'dit is een test',
                     'description' => 'description',
                     'date_started' => date("Y/m/d"),

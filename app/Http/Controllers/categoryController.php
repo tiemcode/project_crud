@@ -13,10 +13,6 @@ class categoryController extends Controller
         $allcate = Category::get();
         return view('categorys.category', ['allcate' => $allcate]);
     }
-    public function add()
-    {
-        return view('categorys.add');
-    }
     public function store(Request $request)
     {
         Category::insert([
@@ -33,6 +29,13 @@ class categoryController extends Controller
         }
         $data = Category::where('id', $id)->first();
         return view('categorys.edit', ['data' => $data]);
+    }
+    public function update(Request $request, $id)
+    {
+        Category::where('id', $id)->update([
+            'name' => $request->input('title'),
+            'updated_at' => date('y-m-d'),
+        ]);
     }
     public function delete($id)
     {

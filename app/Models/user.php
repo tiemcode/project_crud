@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,14 @@ class user extends Authenticatable
 {
     use HasFactory;
     use HasApiTokens, HasFactory, Notifiable;
-
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(role::class, 'project_user');
+    }
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class , 'project_user');
+    }
     /**
      * The attributes that are mass assignable.
      *

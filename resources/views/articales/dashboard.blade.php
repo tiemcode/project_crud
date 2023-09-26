@@ -49,9 +49,9 @@
                 @foreach ($allposts as $post)
                 <tr class="border-b border-gray-700">
                     <td class="w-[40%] p-2">
-                        <h2>
+                        <h6>
                             {{ Str::ucfirst($post->title) }}
-                        </h2>
+                        </h6>
                     </td>
                     <td>
                         {{ $post->category->name }}
@@ -63,7 +63,7 @@
                     </td>
                     <td class="w-[20%] p-2">
                         <div class="flex justify-evenly">
-                            <a href='{{ route('index.edit', ['id' => $post->id]) }}'>edit</a>
+                            <a class="text-white no-underline" href='{{ route('index.edit', ['id' => $post->id]) }}'>edit</a>
                             <form method="POST" action="{{ route('deletePost', ['id' => $post->id]) }}">
                                 @csrf
                                 <div class="text-red-500 hover:cursor-pointer" :href="route('deletePost')" onclick="event.preventDefault();

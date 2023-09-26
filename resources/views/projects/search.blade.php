@@ -17,7 +17,7 @@
 
     <div class="w-1/2">
         <div class="my-2 ">
-            <form action="{{route('project.search')}}" class="flex flex-row flex-between ">
+            <form action="{{route('search.post')}}" class="flex flex-row flex-between ">
                 <input type="text" name="search" id="search" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="zoeken">
                 <input type="submit" value="ga zoeken" class="rounded-md ml-4 bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             </form>
@@ -41,7 +41,7 @@
                         acties
                     </td>
                 </tr>
-                @foreach ($project as $post)
+                @foreach ($projects as $post)
                 <tr class="border-b border-gray-700">
                     <td class="w-[40%] p-2">
                         <h6>
@@ -70,7 +70,7 @@
             </tbody>
         </table>
         <div class="flex pt-2 flex-row-reverse">
-            {!! $project->links() !!}
+            {!! $projects->links() !!}
         </div>
     </div>
 </x-app-layout>

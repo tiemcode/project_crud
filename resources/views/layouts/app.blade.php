@@ -16,15 +16,16 @@
     <script defer src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-gray-900">
         @include('layouts.navigation')
         <x-slot name="header">
             <div class="flex justify-between">
-                <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h1 class="font-semibold text-xl text-gray-200 leading-tight">
                     {{ __('Dashboard') }}
                 </h1>
                 @if(route('dashboard'))
@@ -42,7 +43,7 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="bg-white dark:bg-gray-800 shadow">
+        <header class=" bg-gray-800 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
@@ -69,17 +70,20 @@
         <!-- Page Content -->
         <main>
             <div class="pt-6 flex flex-row justify-evenly">
-                <ul class=" dark:bg-gray-800 h-full">
+                <ul class="pl-0 dark:bg-gray-800 h-full">
                     <li>
-                        <a href="{{route('dashboard')}}" class="block p-4 text-white hover:bg-gray-700">
+                        <a href="{{route('dashboard')}}" class="block no-underline  p-4 text-white hover:bg-gray-700">
                             Artikelen
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}" class="block p-4 text-white hover:bg-gray-700">categorieën </a>
+                        <a href="{{route('category.index')}}" class="block no-underline p-4 text-white hover:bg-gray-700">categorieën </a>
                     </li>
                     <li>
-                        <a href="{{route('projects.index')}}" class="block p-4 text-white hover:bg-gray-700">projecten</a>
+                        <a href="{{route('projects.index')}}" class="block no-underline p-4 text-white hover:bg-gray-700">projecten</a>
+                    </li>
+                    <li>
+                        <a href="{{route('roles.index')}}" class="block no-underline p-4 text-white hover:bg-gray-700">roles</a>
                     </li>
                     <!-- Add more navigation links as needed -->
                 </ul>
