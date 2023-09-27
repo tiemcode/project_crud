@@ -70,7 +70,7 @@ class projectController extends Controller
     public function editUser($projectId, $userId)
     {
         $roles = role::get();
-        $user = user::get();
+        $user = user::where('id', $userId)->first();
         return view("projects.edituser", compact('roles', 'user', 'userId', 'projectId'));
     }
     public function updateUser(Request $request, $projectId, $userId)
@@ -89,7 +89,7 @@ class projectController extends Controller
         DB::table('project_user')->insert([
             'project_id' => $id,
             'role_id' => $request->rollen,
-            'user_id'
+            'user_id' => $request->username
         ]);
     }
     public function search(Request $request)
